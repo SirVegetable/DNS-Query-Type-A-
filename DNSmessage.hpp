@@ -65,36 +65,15 @@ struct Header{
 */
 
 struct Question{
-    unsigned short qType;      // Domain name represented as a sequence of labels. 
-    unsigned short qClass; 
+    unsigned short qType;      // Type of question(A, CNAME, NS, etc). 
+    unsigned short qClass;     // Internet, CSNET, Chaosnet, etc 
 };
 
 
 
-/*
-                Resource Record Format: 
-        +------------------------------------+
-        /                NAME                /
-        +------------------------------------+
-        |                TYPE                |
-        +------------------------------------+
-        |                CLASS               |
-        +------------------------------------+
-        |                TTL                 |
-        +------------------------------------+
-        |                RDLENGTH            |
-        +------------------------------------+
-        /                RDATA               /
-        +------------------------------------+
-
-
-The Answer, Authority and Additional sections have the same format: a variable number of resource records specified in the header
-*/
-
-struct ResRecord{
-    unsigned short rType;        // Domain name this RR belongs to      
-    unsigned short rClass;       // This field specifies class of RDATA
-    unsigned int   ttl;          // Time interval resource may be cached
-    unsigned short rdLengthl;    // Length in octets of RDATA
+struct Query{
+    struct Header qHeader;
+    struct Question qQuestion; 
 }; 
+
 #endif 
