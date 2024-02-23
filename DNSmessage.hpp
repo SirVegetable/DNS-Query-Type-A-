@@ -1,4 +1,5 @@
-
+#ifndef DNSMESSAGE_HPP
+#define DNSMESSAGE_HPP
 
 
 /*
@@ -93,6 +94,7 @@ The Answer, Authority and Additional sections have the same format: a variable n
 struct ResRecord{
     unsigned short rType;        // Domain name this RR belongs to      
     unsigned short rClass;       // This field specifies class of RDATA
-    unsigned int   ttl;          //
-    unsigned short rdLengthl;    //
+    unsigned int   ttl;          // Time interval resource may be cached
+    unsigned short rdLengthl;    // Length in octets of RDATA
 }; 
+#endif 
