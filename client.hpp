@@ -14,23 +14,26 @@ class Client{
 
     public: 
         Client();
-        ~Client(); 
+        ~Client();
+        struct Query CreateQuery(const std::string& hostname); 
         void Send();
+        void Decompress(); 
         std::string RecieveResponse();
         void DNSParseResponse(char* msg_recieved,int* ans_length); 
         
 
     private:
-        const int portNumber = 53; 
+        const std::string IP = "192.168.50.1"; 
+        const int portNumber = 53;
         int socketHandle;
         std::string hostName; 
-        std::vector<char> buffer; 
-        struct addrinfo hints;
-        struct addrinfo* srvInfo;
-        struct addrinfo* ptr;
-        Header header; 
-        Question question;
-        ResRecord RR;
+        char* buffer;
+        char* DnsRequest;
+        unsigned DnsRequestSize; 
+        unsigned int bufferSize;
+        struct Header header;
+        struct Question question; 
+        struct sockaddr_in serverAddr;
         
 };
 

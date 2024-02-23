@@ -65,6 +65,7 @@ struct Header{
 */
 
 struct Question{
+    char name [255]; 
     unsigned short qType;      // Type of question(A, CNAME, NS, etc). 
     unsigned short qClass;     // Internet, CSNET, Chaosnet, etc 
 };
